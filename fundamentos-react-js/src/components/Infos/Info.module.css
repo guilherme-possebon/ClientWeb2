@@ -1,0 +1,30 @@
+.personAboutPost {
+  display: flex;
+  flex-direction: column;
+}
+
+.personAboutPost span {
+  font-size: 0.875rem;
+  color: var(--gray-400);
+  line-height: 1.6;
+}
+
+.personAboutPost b {
+  color: var(--gray-100);
+  line-height: 1.6;
+}
+
+.personAboutSideBar {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.personAboutComment {
+  display: flex;
+  flex-direction: column;
+}
+
+.timeAgo {
+  color: var(--gray-400);
+}

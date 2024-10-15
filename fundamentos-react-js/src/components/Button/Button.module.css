@@ -1,0 +1,7 @@
+.btnPrimary {
+  padding: 1rem;
+  border-radius: 8px;
+  font-weight: bold;
+  background-color: var(--blue-500);
+  color: var(--gray-100);
+}
