@@ -1,9 +1,10 @@
 import styled from "styled-components";
 
 export const BannerContainer = styled.div`
-  height: 37.5rem;
+  height: 20.5rem;
   display: flex;
   justify-content: center;
+  margin-top: 5rem;
 `;
 
 export const BannerTextContainer = styled.div`

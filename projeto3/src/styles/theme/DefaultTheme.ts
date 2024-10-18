@@ -22,7 +22,7 @@ export const defaultTheme = {
   bug: "#A7B723",
   dark: "#75574C",
   dragon: "#7037FF",
-  eletric: "#F9CF30",
+  electric: "#F9CF30",
   fairy: "#E69EAC",
   fighting: "#C12239",
   fire: "#F57D31",
