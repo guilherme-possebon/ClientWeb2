@@ -1,11 +1,6 @@
-import {
-  HeaderContainer,
-  HeaderDiv,
-  HeaderLogo,
-  NavLink,
-  NavMenu,
-} from "./styles";
+import { HeaderContainer, HeaderDiv, HeaderLogo, NavMenu } from "./styles";
 import Logo from "../../assets/Logo.png";
+import { Link } from "react-router-dom";
 
 export function Header() {
   return (
@@ -13,9 +8,9 @@ export function Header() {
       <HeaderContainer>
         <HeaderLogo src={Logo} />
         <NavMenu>
-          <NavLink href="/">Home</NavLink>
-          <NavLink href="/pokedex">Pokedex</NavLink>
-          <NavLink href="/settings">Settings</NavLink>
+          <Link to="/">Home</Link>
+          <Link to="/pokedex">Pokedex</Link>
+          <Link to="#">Settings</Link>
         </NavMenu>
       </HeaderContainer>
     </HeaderDiv>

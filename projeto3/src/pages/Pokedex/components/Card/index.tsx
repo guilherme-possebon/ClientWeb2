@@ -1,12 +1,20 @@
 import { useState } from "react";
-import { CardContainer, IsShinyButton } from "./styles";
-import { FaSun, FaMoon } from "react-icons/fa";
+import {
+  CardAction,
+  CardBody,
+  CardContainer,
+  CardInfo,
+  CardTypes,
+  EyeStyled,
+  SparkleStyled,
+} from "./styles";
+import { BadgeType, getBadgeUrl } from "../../../../enum/badgeEnum";
 
 interface CardProps {
   sprite: string;
   name: string;
-  type1: string;
-  type2: string;
+  type1: BadgeType;
+  type2: BadgeType;
   spriteShiny: string;
 }
 
@@ -16,15 +24,22 @@ export function Card({ sprite, name, type1, type2, spriteShiny }: CardProps) {
 
   return (
     <div>
-      <CardContainer color={type1}>
-        <img src={isShiny ? spriteShiny : sprite} />
-        <IsShinyButton onClick={() => setIsShiny(!isShiny)}>
-          {isShiny ? <FaSun /> : <FaMoon />}
-        </IsShinyButton>
+      <CardContainer color={type1} $isShiny={isShiny}>
+        <CardAction>
+          <EyeStyled size={24} />
+          <SparkleStyled size={24} onClick={() => setIsShiny(!isShiny)} />
+        </CardAction>
+        <CardBody>
+          <img src={isShiny ? spriteShiny : sprite} />
+          <CardInfo>
+            <span>{name.charAt(0).toUpperCase() + name.slice(1)}</span>
+            <CardTypes>
+              <img src={getBadgeUrl(type1)} />
+              {type2 && <img src={getBadgeUrl(type2)} />}
+            </CardTypes>
+          </CardInfo>
+        </CardBody>
       </CardContainer>
-      <span>{name}</span>
-      <p>{type1}</p>
-      <p>{type2}</p>
     </div>
   );
 }

@@ -1,3 +1,4 @@
+import { BadgeType } from "../../enum/badgeEnum";
 import { api } from "../axios/axios";
 
 const resource = "/pokemons";
@@ -7,8 +8,8 @@ export interface PokemonInterface {
   name: string;
   sprite: string;
   spriteShiny: string;
-  type1: string;
-  type2: string;
+  type1: BadgeType;
+  type2: BadgeType;
 }
 
 // interface ParamsType {

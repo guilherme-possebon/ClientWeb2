@@ -2,7 +2,7 @@ import styled from "styled-components";
 
 export const HeaderDiv = styled.div`
   width: 100%;
-  background-color: ${(props) => props.theme.eletric};
+  background-color: ${(props) => props.theme.electric};
 `;
 
 export const HeaderContainer = styled.div`
@@ -22,14 +22,15 @@ export const HeaderLogo = styled.img`
 export const NavMenu = styled.nav`
   display: flex;
   gap: 20px;
-`;
 
-export const NavLink = styled.a`
-  color: ${(props) => props.theme["gray-900"]};
-  font-weight: bold;
-  transition: 150ms all ease-in-out;
+  & a {
+    color: ${(props) => props.theme["gray-900"]};
+    font-weight: bold;
+    transition: 150ms all ease-in-out;
+    text-decoration: none;
 
-  &:hover {
-    color: ${(props) => props.theme["primary-300"]};
+    &:hover {
+      color: ${(props) => props.theme["primary-300"]};
+    }
   }
 `;
