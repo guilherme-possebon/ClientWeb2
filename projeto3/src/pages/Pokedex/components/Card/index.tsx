@@ -5,10 +5,10 @@ import {
   CardContainer,
   CardInfo,
   CardTypes,
-  EyeStyled,
   SparkleStyled,
 } from "./styles";
 import { BadgeType, getBadgeUrl } from "../../../../enum/badgeEnum";
+import { Modal } from "../../../../components/Modal";
 
 interface CardProps {
   sprite: string;
@@ -26,7 +26,7 @@ export function Card({ sprite, name, type1, type2, spriteShiny }: CardProps) {
     <div>
       <CardContainer color={type1} $isShiny={isShiny}>
         <CardAction>
-          <EyeStyled size={24} />
+          <Modal color={type1} />
           <SparkleStyled size={24} onClick={() => setIsShiny(!isShiny)} />
         </CardAction>
         <CardBody>

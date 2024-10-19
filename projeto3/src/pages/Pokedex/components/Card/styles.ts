@@ -1,14 +1,14 @@
 import styled, { css, keyframes } from "styled-components";
-import { Sparkle, Eye } from "@phosphor-icons/react";
+import { Sparkle } from "@phosphor-icons/react";
 
 const liftAndRotate = keyframes`
   0% {
-    transform: translateY(0) rotateY(0deg);
+    transform: translateY(0) rotateY(0deg); 
     opacity: 1;
   }
   50% {
-    transform: translateY(-100px) rotateY(180deg);
-    opacity: 0.5;
+    transform: translateY(-100px) rotateY(180deg); 
+    opacity: 0.5; 
   }
   100% {
     transform: translateY(0) rotateY(360deg);
@@ -18,12 +18,12 @@ const liftAndRotate = keyframes`
 
 const shakeAndRotate = keyframes`
   0% {
-    transform: translateY(0) rotateY(0deg);
+    transform: translateY(0) rotateY(0deg); 
     opacity: 1;
   }
   50% {
-    transform: translateY(-100px) rotateY(180deg);
-    opacity: 0.5;
+    transform: translateY(-100px) rotateY(180deg); 
+    opacity: 0.5; 
   }
   100% {
     transform: translateY(0) rotateY(360deg);
@@ -40,9 +40,6 @@ export const SparkleStyled = styled(Sparkle)`
   cursor: pointer;
 `;
 
-export const EyeStyled = styled(Eye)`
-  color: ${(props) => props.theme["gray-900"]};
-`;
 
 export const CardContainer = styled.div<CardContainerProps>`
   width: 100%;

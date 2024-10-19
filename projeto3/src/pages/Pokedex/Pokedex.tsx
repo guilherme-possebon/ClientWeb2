@@ -13,7 +13,6 @@ export function Pokedex() {
   const getPokemons = async () => {
     const response = await PokedexApi.getPokemons();
     setPokemons(response.data);
-    console.log(response.data);
   };
 
   return (
@@ -22,8 +21,8 @@ export function Pokedex() {
         pokemons.map((pokemon) => (
           <Card
             spriteShiny={pokemon.spriteShiny}
-            sprite={pokemon.sprite}
             key={pokemon.id}
+            sprite={pokemon.sprite}
             name={pokemon.name}
             type1={pokemon.type1}
             type2={pokemon.type2}
