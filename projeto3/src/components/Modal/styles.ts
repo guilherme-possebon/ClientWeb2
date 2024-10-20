@@ -79,6 +79,11 @@ export const AbilityContainer = styled.div`
 `;
 
 export const Images = styled.img`
-  width: 300px;
   height: 300px;
+  width: 300px;
+  transition: transform 0.5s;
+
+  &:hover {
+    transform: scale(1.15);
+  }
 `;

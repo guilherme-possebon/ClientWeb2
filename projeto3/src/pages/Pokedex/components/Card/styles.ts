@@ -45,13 +45,13 @@ export const CardImage = styled.img`
   transition: transform 0.5s;
 
   &:hover {
-    transform: scale(1.3);
+    transform: scale(1.15);
   }
 `;
 
 export const CardContainer = styled.div<CardContainerProps>`
   width: 100%;
-  border-radius: 8px;
+  max-width: 435px;
   margin-top: 10px;
   background: ${(props) => props.theme[props.color]};
   position: relative;
