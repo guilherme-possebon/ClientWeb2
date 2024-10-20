@@ -10,19 +10,27 @@ export interface PokemonInterface {
   spriteShiny: string;
   type1: BadgeType;
   type2: BadgeType;
+  description: string;
+  abilityHidden: string;
+  abilityNormal: string;
 }
 
-// interface ParamsType {
-//   limit: number;
-//   offset: number;
-//   page: number;
-// }
+interface ParamsType {
+  limit: number;
+  offset: number;
+  page: number;
+}
 
 const getPokemons = async () => {
-  // params: { limit: 10, offset: 0, page: 1 }
-  return await api.get(`${resource}`);
+  const params: ParamsType = { limit: 30, offset: 0, page: 1 };
+  return await api.get(`${resource}`, { params });
+};
+
+const getOnePokemon = async (id: number) => {
+  return await api.get(`${resource}/${id}`);
 };
 
 export const PokedexApi = {
   getPokemons,
+  getOnePokemon,
 };

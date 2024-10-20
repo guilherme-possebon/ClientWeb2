@@ -50,3 +50,35 @@ export const ModalContent = styled.div<ModalContentProps>`
   position: relative;
   color: ${(props) => props.theme["gray-900"]};
 `;
+
+export const InfoContainer = styled.div`
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+`;
+
+export const Infos = styled.div`
+  display: flex;
+  justify-content: space-evenly;
+`;
+
+export const Abilitys = styled.div`
+  text-transform: capitalize;
+  color: ${(props) => props.theme["gray-900"]};
+  font-size: 1rem;
+  font-weight: bold;
+`;
+
+export const AbilityContainer = styled.div`
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+  width: 100%;
+  align-items: center;
+  justify-content: center;
+`;
+
+export const Images = styled.img`
+  width: 300px;
+  height: 300px;
+`;

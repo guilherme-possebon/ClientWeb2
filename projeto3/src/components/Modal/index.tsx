@@ -1,7 +1,19 @@
-import { useState } from "react";
-import { EyeStyled, ModalContainer, ModalContent, XStyled } from "./styles";
+import { useContext, useEffect, useState } from "react";
+import {
+  AbilityContainer,
+  Abilitys,
+  EyeStyled,
+  Images,
+  InfoContainer,
+  Infos,
+  ModalContainer,
+  ModalContent,
+  XStyled,
+} from "./styles";
 import { BadgeType } from "../../enum/badgeEnum";
-import { GraficChart } from "../GraphicChart/index";
+import { GraphicChart } from "../GraphicChart/index";
+import { PokedexContex } from "../../context/PokedexContext";
+import { PokedexApi, PokemonInterface } from "../../api/routes/PokedexApi";
 
 interface ModalProps {
   color: BadgeType;
@@ -9,6 +21,37 @@ interface ModalProps {
 
 export function Modal({ color }: ModalProps) {
   const [isOpen, setIsOpen] = useState(false);
+  const [stats, setStats] = useState<number[]>([]);
+  const [data, setData] = useState<PokemonInterface>();
+
+  const id: number = useContext(PokedexContex);
+
+  useEffect(() => {
+    getPokemonStats();
+  }, []);
+
+  const getPokemonStats = async () => {
+    try {
+      const result = await PokedexApi.getOnePokemon(id);
+      const resultData = result.data;
+
+      setData(resultData);
+
+      const stats = [
+        resultData.hp,
+        resultData.atk,
+        resultData.spatk,
+        resultData.def,
+        resultData.spdef,
+        resultData.speed,
+      ];
+
+      setStats(stats);
+    } catch (error) {
+      console.error("Error fetching Pokémon stats:", error);
+    }
+  };
+
   return (
     <>
       <EyeStyled size={24} onClick={() => setIsOpen(!isOpen)} />
@@ -16,7 +59,21 @@ export function Modal({ color }: ModalProps) {
         <ModalContainer>
           <ModalContent color={color}>
             <XStyled onClick={() => setIsOpen(!isOpen)} />
-            <GraficChart />
+            <InfoContainer>
+              <Infos>
+                <Images src={data?.sprite} />
+                <Images src={data?.spriteShiny} />
+              </Infos>
+              <Infos>
+                <GraphicChart stats={stats} />
+                <AbilityContainer>
+                  <Abilitys>Habilidade normal: {data?.abilityNormal}</Abilitys>
+                  <Abilitys>
+                    Habilidade escondida: {data?.abilityHidden}
+                  </Abilitys>
+                </AbilityContainer>
+              </Infos>
+            </InfoContainer>
           </ModalContent>
         </ModalContainer>
       )}
