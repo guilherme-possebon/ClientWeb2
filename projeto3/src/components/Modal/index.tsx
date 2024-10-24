@@ -8,6 +8,7 @@ import {
   Infos,
   ModalContainer,
   ModalContent,
+  Title,
   XStyled,
 } from "./styles";
 import { BadgeType } from "../../enum/badgeEnum";
@@ -58,6 +59,7 @@ export function Modal({ color }: ModalProps) {
       {isOpen && (
         <ModalContainer>
           <ModalContent color={color}>
+            <Title>{data?.name}</Title>
             <XStyled onClick={() => setIsOpen(!isOpen)} />
             <InfoContainer>
               <Infos>
@@ -67,10 +69,9 @@ export function Modal({ color }: ModalProps) {
               <Infos>
                 <GraphicChart stats={stats} />
                 <AbilityContainer>
-                  <Abilitys>Habilidade normal: {data?.abilityNormal}</Abilitys>
-                  <Abilitys>
-                    Habilidade escondida: {data?.abilityHidden}
-                  </Abilitys>
+                  <Abilitys>Habilidades</Abilitys>
+                  <Abilitys>normal: {data?.abilityNormal}</Abilitys>
+                  <Abilitys>escondida: {data?.abilityHidden}</Abilitys>
                 </AbilityContainer>
               </Infos>
             </InfoContainer>

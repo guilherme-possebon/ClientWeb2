@@ -51,6 +51,12 @@ export const ModalContent = styled.div<ModalContentProps>`
   color: ${(props) => props.theme["gray-900"]};
 `;
 
+export const Title = styled.h1`
+  text-align: center;
+  text-transform: capitalize;
+  font-size: 2rem;
+`;
+
 export const InfoContainer = styled.div`
   display: flex;
   flex-direction: column;

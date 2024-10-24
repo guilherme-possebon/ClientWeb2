@@ -6,32 +6,62 @@ interface GraphicChartProps {
 }
 
 export function GraphicChart({ stats }: GraphicChartProps) {
-  const [option, setOption] = useState({
-    options: {
-      chart: {
-        id: "basic-bar",
-      },
-      xaxis: {
-        categories: ["hp", "atk", "spatk", "def", "spdef", "speed"],
-      },
-      plotOptions: {
-        bar: {
-          borderRadius: 4,
-          borderRadiusApplication: "end" as const,
-          horizontal: true,
+  const [options, setOptions] = useState({
+    chart: {
+      id: "basic-bar",
+      height: 350,
+    },
+    xaxis: {
+      categories: [
+        "Health Points",
+        "Attack",
+        "Special Attack",
+        "Defense",
+        "Special Defense",
+        "Speed",
+      ],
+      labels: {
+        style: {
+          fontSize: "1rem",
+          fontWeight: "bold",
+          colors: ["#000000"],
         },
+      },
+    },
+    yaxis: {
+      labels: {
+        style: {
+          fontSize: "1rem",
+          fontWeight: "bold",
+          colors: ["#000"],
+        },
+      },
+    },
+    plotOptions: {
+      bar: {
+        distributed: true,
+        borderRadius: 4,
+        horizontal: true,
+        barHeight: "85%",
       },
     },
     series: [
       {
-        name: "series-1",
+        name: "Stats",
         data: stats,
       },
     ],
+    dataLabels: {
+      enabled: false,
+    },
+    colors: ["#F24405", "#FA7F08", "#042940", "#DBF227", "#0CF25D", "#7A577A"], // Cores diferentes para cada barra
+    legend: {
+      show: false,
+    },
   });
 
   useEffect(() => {
-    setOption((prevOption) => ({
+    setOptions((prevOption) => ({
       ...prevOption,
       series: [
         {
@@ -47,8 +77,8 @@ export function GraphicChart({ stats }: GraphicChartProps) {
       <div className="row">
         <div className="mixed-chart">
           <Chart
-            options={option.options}
-            series={option.series}
+            options={options}
+            series={options.series}
             type="bar"
             width="350"
           />
