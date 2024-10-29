@@ -19,6 +19,8 @@ export const defaultTheme = {
 
   "yellow-500": "#FBA94C",
 
+  unknow: "#fff",
+
   bug: "#A7B723",
   dark: "#75574C",
   dragon: "#7037FF",

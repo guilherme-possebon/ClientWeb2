@@ -16,13 +16,14 @@ export interface PokemonInterface {
 }
 
 interface ParamsType {
-  limit: number;
-  offset: number;
-  page: number;
+  limit?: number;
+  offset?: number;
+  page?: number;
+  name?: string;
 }
 
-const getPokemons = async () => {
-  const params: ParamsType = { limit: 30, offset: 0, page: 1 };
+const getPokemons = async ({ name }: ParamsType) => {
+  const params: ParamsType = { limit: 30, offset: 0, page: 1, name: name };
   return await api.get(`${resource}`, { params });
 };
 

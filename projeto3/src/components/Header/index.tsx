@@ -10,6 +10,7 @@ export function Header() {
         <NavMenu>
           <Link to="/">Home</Link>
           <Link to="/pokedex">Pokedex</Link>
+          <Link to="/trade">Trade</Link>
           <Link to="#">Settings</Link>
         </NavMenu>
       </HeaderContainer>
