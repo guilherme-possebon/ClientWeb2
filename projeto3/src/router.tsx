@@ -6,14 +6,12 @@ import { Trade } from "./pages/Trade";
 
 export function Router() {
   return (
-    <>
-      <Routes>
-        <Route path="/" element={<DefaultLayout />}>
-          <Route path="/" element={<Home />} />
-          <Route path="/pokedex" element={<Pokedex />} />
-          <Route path="/trade" element={<Trade />} />
-        </Route>
-      </Routes>
-    </>
+    <Routes>
+      <Route path="/" element={<DefaultLayout />}>
+        <Route path="/" element={<Home />} />
+        <Route path="/pokedex" element={<Pokedex />} />
+        <Route path="/trade" element={<Trade />} />
+      </Route>
+    </Routes>
   );
 }

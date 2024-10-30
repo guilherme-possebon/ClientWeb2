@@ -1,7 +1,12 @@
-import { HeaderContainer, HeaderDiv, HeaderLogo, NavMenu } from "./styles";
+import {
+  HeaderContainer,
+  HeaderDiv,
+  HeaderLogo,
+  NavLink,
+  NavMenu,
+} from "./styles";
 import Logo from "../../assets/Logo.png";
 import { Link } from "react-router-dom";
-
 export function Header() {
   return (
     <HeaderDiv>

@@ -1,11 +1,23 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import Chart from "react-apexcharts";
 
-interface GraphicChartProps {
-  stats: number[];
+interface GraficChartProps {
+  hp: number;
+  atk: number;
+  spatk: number;
+  def: number;
+  spdef: number;
+  speed: number;
 }
 
-export function GraphicChart({ stats }: GraphicChartProps) {
+export function GraficChart({
+  hp,
+  atk,
+  spatk,
+  def,
+  spdef,
+  speed,
+}: GraficChartProps) {
   const [options, setOptions] = useState({
     chart: {
       id: "basic-bar",
@@ -47,8 +59,8 @@ export function GraphicChart({ stats }: GraphicChartProps) {
     },
     series: [
       {
-        name: "Stats",
-        data: stats,
+        name: "status",
+        data: [hp, atk, spatk, def, spdef, speed],
       },
     ],
     dataLabels: {
@@ -60,27 +72,16 @@ export function GraphicChart({ stats }: GraphicChartProps) {
     },
   });
 
-  useEffect(() => {
-    setOptions((prevOption) => ({
-      ...prevOption,
-      series: [
-        {
-          name: "Stats",
-          data: stats,
-        },
-      ],
-    }));
-  }, [stats]);
-
   return (
     <div className="app">
       <div className="row">
         <div className="mixed-chart">
           <Chart
-            options={options}
+            options={options} // Passa todas as opções aqui
             series={options.series}
             type="bar"
-            width="350"
+            width="600"
+            height={200}
           />
         </div>
       </div>

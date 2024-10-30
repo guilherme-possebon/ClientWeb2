@@ -1,24 +1,34 @@
 import { useState } from "react";
 import {
+  AbilityContainer,
   CardAction,
   CardBody,
   CardContainer,
-  CardImage,
+  CardContent,
+  CardContentGrid,
+  CardContentHeader,
   CardInfo,
   CardTypes,
   SparkleStyled,
 } from "./styles";
 import { BadgeType, getBadgeUrl } from "../../../../enum/badgeEnum";
 import { Modal } from "../../../../components/Modal";
-import { PokedexContex } from "../../../../context/PokedexContext";
+import { GraficChart } from "../../../../components/GraficChart";
 
 interface CardProps {
-  id: number;
   sprite: string;
   name: string;
   type1: BadgeType;
   type2: BadgeType;
   spriteShiny: string;
+  hp: number;
+  atk: number;
+  spatk: number;
+  def: number;
+  spdef: number;
+  speed: number;
+  abilityHidden: string;
+  abilityNormal: string;
 }
 
 export function Card({
@@ -27,28 +37,69 @@ export function Card({
   type1,
   type2,
   spriteShiny,
-  id,
+  hp,
+  atk,
+  spatk,
+  def,
+  spdef,
+  speed,
+  abilityHidden,
+  abilityNormal,
 }: CardProps) {
   const [isShiny, setIsShiny] = useState(false);
-
+  const [isModalOpen, setIsModalOpen] = useState(false);
   return (
-    <PokedexContex.Provider value={id}>
+    <div>
       <CardContainer color={type1} $isShiny={isShiny}>
         <CardAction>
-          <Modal color={type1} />
+          <Modal
+            color={type1}
+            icon={true}
+            setIsOpen={setIsModalOpen}
+            isOpen={isModalOpen}
+          >
+            <CardContent>
+              <CardContentHeader>
+                <span>{name}</span>
+              </CardContentHeader>
+              <CardContentGrid>
+                <div>
+                  <span>Version Normal</span>
+                  <img src={sprite} />
+                </div>
+                <div>
+                  <span>Version Shiny</span>
+                  <img src={spriteShiny} />
+                </div>
+                <GraficChart
+                  atk={atk}
+                  def={def}
+                  hp={hp}
+                  spatk={spatk}
+                  spdef={spdef}
+                  speed={speed}
+                />
+                <AbilityContainer>
+                  <span>Abilities</span>
+                  {abilityNormal && <span>Normal: {abilityNormal}</span>}
+                  {abilityHidden && <span>Hidden: {abilityHidden}</span>}
+                </AbilityContainer>
+              </CardContentGrid>
+            </CardContent>
+          </Modal>
           <SparkleStyled size={24} onClick={() => setIsShiny(!isShiny)} />
         </CardAction>
         <CardBody>
-          <CardImage src={isShiny ? spriteShiny : sprite} />
+          <img src={isShiny ? spriteShiny : sprite} />
           <CardInfo>
             <span>{name.charAt(0).toUpperCase() + name.slice(1)}</span>
             <CardTypes>
-              <CardImage src={getBadgeUrl(type1)} />
-              {type2 && <CardImage src={getBadgeUrl(type2)} />}
+              <img src={getBadgeUrl(type1)} />
+              {type2 && <img src={getBadgeUrl(type2)} />}
             </CardTypes>
           </CardInfo>
         </CardBody>
       </CardContainer>
-    </PokedexContex.Provider>
+    </div>
   );
 }

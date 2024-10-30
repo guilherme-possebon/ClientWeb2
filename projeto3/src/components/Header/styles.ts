@@ -26,7 +26,6 @@ export const NavMenu = styled.nav`
   & a {
     color: ${(props) => props.theme["gray-900"]};
     font-weight: bold;
-    transition: 150ms all ease-in-out;
     text-decoration: none;
 
     &:hover {
@@ -34,3 +33,5 @@ export const NavMenu = styled.nav`
     }
   }
 `;
+
+export const NavLink = styled.a``;

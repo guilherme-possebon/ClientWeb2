@@ -7,7 +7,6 @@ interface ModalContentProps {
 
 export const EyeStyled = styled(Eye)`
   color: ${(props) => props.theme["gray-900"]};
-  cursor: pointer;
 `;
 
 export const XStyled = styled(X)`
@@ -32,7 +31,7 @@ export const ModalContainer = styled.div`
   width: 100%;
   height: 100%;
   backdrop-filter: blur(3px);
-  z-index: 999;
+  z-index: 900;
 
   & button {
     background-color: ${(props) => props.theme["gray-900"]};
@@ -43,53 +42,9 @@ export const ModalContent = styled.div<ModalContentProps>`
   background-color: ${(props) => props.theme[props.color]};
   padding: 20px;
   border-radius: 5px;
-  width: 50%;
   min-width: 300px;
-  max-width: 800px;
+  max-width: 1200px;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
   position: relative;
   color: ${(props) => props.theme["gray-900"]};
-`;
-
-export const Title = styled.h1`
-  text-align: center;
-  text-transform: capitalize;
-  font-size: 2rem;
-`;
-
-export const InfoContainer = styled.div`
-  display: flex;
-  flex-direction: column;
-  gap: 20px;
-`;
-
-export const Infos = styled.div`
-  display: flex;
-  justify-content: space-evenly;
-`;
-
-export const Abilitys = styled.div`
-  text-transform: capitalize;
-  color: ${(props) => props.theme["gray-900"]};
-  font-size: 1rem;
-  font-weight: bold;
-`;
-
-export const AbilityContainer = styled.div`
-  display: flex;
-  flex-direction: column;
-  gap: 30px;
-  width: 100%;
-  align-items: center;
-  justify-content: center;
-`;
-
-export const Images = styled.img`
-  height: 300px;
-  width: 300px;
-  transition: transform 0.5s;
-
-  &:hover {
-    transform: scale(1.15);
-  }
 `;

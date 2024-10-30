@@ -3,35 +3,34 @@ import { api } from "../axios/axios";
 
 const resource = "/pokemons";
 
-export interface PokemonInterface {
+export interface PokemonType {
   id: number;
   name: string;
   sprite: string;
   spriteShiny: string;
   type1: BadgeType;
   type2: BadgeType;
-  description: string;
+  hp: number;
+  atk: number;
+  spatk: number;
+  def: number;
+  spdef: number;
+  speed: number;
   abilityHidden: string;
   abilityNormal: string;
 }
 
-interface ParamsType {
-  limit?: number;
-  offset?: number;
-  page?: number;
-  name?: string;
+export interface ParamsTypePokemon {
+  species?: string;
 }
 
-const getPokemons = async ({ name }: ParamsType) => {
-  const params: ParamsType = { limit: 30, offset: 0, page: 1, name: name };
-  return await api.get(`${resource}`, { params });
+const getPokemon = async (props: ParamsTypePokemon) => {
+  const params = { name: props };
+
+  const data = await api.get(`${resource}`, { params });
+  return data;
 };
 
-const getOnePokemon = async (id: number) => {
-  return await api.get(`${resource}/${id}`);
-};
-
-export const PokedexApi = {
-  getPokemons,
-  getOnePokemon,
+export const pokemonApi = {
+  getPokemon,
 };
